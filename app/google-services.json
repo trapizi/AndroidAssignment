@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "405352313018",
+    "firebase_url": "https://spaghetti-68866.firebaseio.com",
+    "project_id": "spaghetti-68866",
+    "storage_bucket": "spaghetti-68866.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405352313018:android:7595f828044f5925",
+        "android_client_info": {
+          "package_name": "com.example.steven.spaghetti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405352313018-9250ch2mk1849kf1o121nh3scchukl23.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.steven.spaghetti",
+            "certificate_hash": "ef38f93ef71d2e83c4c813392a03e39dfea597d9"
+          }
+        },
+        {
+          "client_id": "405352313018-0jatgf0p7ft8nl5fjl80vtpu2a4tvggr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsshvq713y0SdXmSAMZWBOnfqr_VvjRMw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405352313018-0jatgf0p7ft8nl5fjl80vtpu2a4tvggr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
