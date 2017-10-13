@@ -14,7 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -83,7 +82,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LogIn.this, "Welcome " +
                                     FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(LogIn.this, Homepage.class));
+                            startActivity(new Intent(LogIn.this, QuizSelection.class));
 
                         } else {
                             Toast.makeText(LogIn.this, "Authentication failed.",
