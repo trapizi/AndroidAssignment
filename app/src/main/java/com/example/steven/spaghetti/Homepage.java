@@ -93,6 +93,14 @@ public class Homepage extends AppCompatActivity {
         } return true;
     }
 
+<<<<<<< HEAD
+    public void onClick(View view){
+        Intent i = new Intent(this, forumForm.class);
+        startActivity(i);
+    }
+
+=======
+>>>>>>> c42fa91045af946cefef1677f3d4ea4a996b1215
     /**
      * A placeholder fragment containing a simple view.
      */
