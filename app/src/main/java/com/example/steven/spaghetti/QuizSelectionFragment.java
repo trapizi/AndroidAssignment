@@ -1,6 +1,7 @@
 package com.example.steven.spaghetti;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.steven.spaghetti.Common.Common;
 import com.example.steven.spaghetti.Interface.ItemClickListener;
 import com.example.steven.spaghetti.Model.Quiz;
 import com.example.steven.spaghetti.ViewHolder.QuizViewHolder;
@@ -89,8 +91,11 @@ public class QuizSelectionFragment extends Fragment {
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(getActivity(), String.format("%s|%s", mFirebaseAdapter.getRef(position).getKey(),
-                                model.getName()), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), String.format("%s|%s", mFirebaseAdapter.getRef(position).getKey(), model.getName()), Toast.LENGTH_SHORT).show();
+                    Intent startQuiz = new Intent(getActivity(),StartQuiz.class);
+                        Common.quizId = mFirebaseAdapter.getRef(position).getKey();
+                        startActivity(startQuiz);
+
                     }
                 });
             }

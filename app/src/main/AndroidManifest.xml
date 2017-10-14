@@ -25,7 +25,10 @@
             android:name=".Homepage"
             android:label="@string/title_activity_homepage"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".QuizSelection"></activity>
+        <activity android:name=".QuizSelection" />
+        <activity android:name=".StartQuiz" />
+        <activity android:name=".Playing" />
+        <activity android:name=".QuizResult"></activity>
     </application>
 
 </manifest>
