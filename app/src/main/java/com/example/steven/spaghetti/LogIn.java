@@ -82,7 +82,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LogIn.this, "Welcome " +
                                     FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(LogIn.this, QuizSelection.class));
+                            startActivity(new Intent(LogIn.this, Homepage.class));
 
                         } else {
                             Toast.makeText(LogIn.this, "Authentication failed.",

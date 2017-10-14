@@ -93,14 +93,12 @@ public class Homepage extends AppCompatActivity {
         } return true;
     }
 
-<<<<<<< HEAD
     public void onClick(View view){
         Intent i = new Intent(this, forumForm.class);
         startActivity(i);
     }
 
-=======
->>>>>>> c42fa91045af946cefef1677f3d4ea4a996b1215
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -129,11 +127,12 @@ public class Homepage extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_homepage, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            View rootView = inflater.inflate(R.layout.classroom_feeds, container, false);
+
             return rootView;
         }
+
+
     }
 
     /**
