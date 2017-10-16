@@ -31,7 +31,7 @@ public class forumForm extends AppCompatActivity {
 
     }
 
-    private boolean onOptionItemSelected (MenuItem item){
+    /*private boolean onOptionItemSelected (MenuItem item){
         if(item.getItemId() == R.id.post)
         {
             createPost();
@@ -42,5 +42,5 @@ public class forumForm extends AppCompatActivity {
     private void createPost(){
         Post post = new Post (UUID.randomUUID().toString(), topic.getText().toString(), discussion.getText().toString());
         mDatabaseReference.child("forum").child(post.getUid()).setValue(post);
-    }
+    }*/
 }
