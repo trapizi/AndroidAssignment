@@ -5,35 +5,35 @@ package com.example.steven.spaghetti.Model;
  */
 
 public class Question {
-    private String quizId;
+    private String QuizId;
     private String Question;
     private String AnswerA;
     private String AnswerB;
     private String AnswerC;
     private String AnswerD;
     private String CorrectAnswer;
-    private String isImageQuestion;
+    private String IsImageQuestion;
 
     public Question() {
     }
 
     public Question(String quizId, String question, String answerA, String answerB, String answerC, String answerD, String correctAnswer, String isImageQuestion) {
-        this.quizId = quizId;
+        QuizId = quizId;
         Question = question;
         AnswerA = answerA;
         AnswerB = answerB;
         AnswerC = answerC;
         AnswerD = answerD;
         CorrectAnswer = correctAnswer;
-        this.isImageQuestion = isImageQuestion;
+        IsImageQuestion = isImageQuestion;
     }
 
     public String getQuizId() {
-        return quizId;
+        return QuizId;
     }
 
     public void setQuizId(String quizId) {
-        this.quizId = quizId;
+        QuizId = quizId;
     }
 
     public String getQuestion() {
@@ -85,10 +85,11 @@ public class Question {
     }
 
     public String getIsImageQuestion() {
-        return isImageQuestion;
+        return IsImageQuestion;
     }
 
     public void setIsImageQuestion(String isImageQuestion) {
-        this.isImageQuestion = isImageQuestion;
+        IsImageQuestion = isImageQuestion;
     }
 }
+

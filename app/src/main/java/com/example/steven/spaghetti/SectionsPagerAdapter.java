@@ -22,7 +22,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return tab1;
 
             case 1:
-                fragment_quiz tab2 = new fragment_quiz();
+                QuizSelectionFragment tab2 = new QuizSelectionFragment();
                 return tab2;
 
             case 3:

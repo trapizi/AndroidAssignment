@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import static com.example.steven.spaghetti.R.id.question_image;
 import static com.example.steven.spaghetti.R.id.question_text;
 
 public class Playing extends AppCompatActivity implements View.OnClickListener{
@@ -33,8 +34,9 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
     int totalQuestion;
     int correctAnswer;
 
-    FirebaseDatabase database;
+    FirebaseDatabase mDatabase;
     DatabaseReference mReference;
+
 
     ProgressBar progressBar;
     ImageView questionImage;
@@ -46,13 +48,11 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);
 
-        //Connecting database
-        database = FirebaseDatabase.getInstance();
-        mReference = database.getReference("Questions");
 
         textScore = (TextView)findViewById(R.id.txtScore);
         textQuestionNum = (TextView)findViewById(R.id.txtTotalQuestion);
         questionText = (TextView)findViewById(question_text);
+        questionImage = (ImageView)findViewById(question_image);
 
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
 
@@ -72,7 +72,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {
 
         mCountDown.cancel();
-        if(index < totalQuestion) {
+        if(index < totalQuestion) { //looping through question list
             Button clickedButton = (Button) view;
             if(clickedButton.getText().equals(Common.questionList.get(index).getCorrectAnswer())) {
                 //Pick correct answer
@@ -104,16 +104,18 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
             progressValue=0;
 
             if(Common.questionList.get(index).getIsImageQuestion().equals("true")) {
-                //If the quiz has image
+                //If the question has image
                 Picasso.with(getBaseContext())
                         .load(Common.questionList.get(index).getQuestion())
                         .into(questionImage);
                 questionImage.setVisibility(View.VISIBLE);
                 questionText.setVisibility(View.INVISIBLE);
             } else {
+                //If the question doesn't have image
                 questionText.setText(Common.questionList.get(index).getQuestion());
-                questionImage.setVisibility(View.VISIBLE);
-                questionText.setVisibility(View.INVISIBLE);
+
+                questionImage.setVisibility(View.INVISIBLE);
+                questionText.setVisibility(View.VISIBLE);
             }
             btnA.setText(Common.questionList.get(index).getAnswerA());
             btnB.setText(Common.questionList.get(index).getAnswerB());
@@ -152,6 +154,6 @@ public class Playing extends AppCompatActivity implements View.OnClickListener{
                 showQuestion(++index);
             }
         };
-        showQuestion(++index);
+        showQuestion(index);
     }
 }
