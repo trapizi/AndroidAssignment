@@ -13,4 +13,6 @@ public class Common {
     public static String quizId;
     public static List<Question> questionList = new ArrayList<>();
 
+
+    public static final String STR_PUSH = "pushNotification";
 }
