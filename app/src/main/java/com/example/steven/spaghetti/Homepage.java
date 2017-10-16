@@ -22,7 +22,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Homepage extends AppCompatActivity {
 
@@ -44,7 +53,11 @@ public class Homepage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
     private ListView listtopic;
+
+    private List<Forum> forumList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +68,12 @@ public class Homepage extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listtopic = (ListView)findViewById(R.id.listforum);
+        listtopic = (ListView) findViewById(R.id.listforum);
 
         Toast.makeText(this, "Welcome " +
                 FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_LONG).show();
 
-        
+
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
@@ -79,6 +92,41 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
+    }
+
+    //Firebase
+
+
+    private void addEventFirebaseListener(){
+        listtopic.setVisibility(View.INVISIBLE);
+
+        mDatabaseReference.child("topic").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(listtopic.size() > 0 )
+                    listtopic.clear();
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()){
+                    Topic topic = postSnapshot.getValue(classroom_feeds.class);
+                    listtopic.add(topic);
+                }
+
+                ListViewAdapter adapter = new ListViewAdapter(this, listtopic);
+                listtopic.setAdapter(adapter);
+
+                listtopic.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void initFirebase(){
+        FirebaseApp.initializeApp(this);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
     }
 
 
@@ -175,4 +223,6 @@ public class Homepage extends AppCompatActivity {
             return null;
         }
     }
+
+
 }
