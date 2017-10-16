@@ -9,10 +9,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.content.Intent;
 
 public class classroom_feeds extends Fragment {
+
+    private EditText topic, discussion;
+    private ListView listforum;
+    private Button add;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -21,6 +30,7 @@ public class classroom_feeds extends Fragment {
 
         return rootView;
     }
+
 
 
 

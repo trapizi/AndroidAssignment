@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,8 @@ public class Homepage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private ListView listtopic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -52,11 +55,12 @@ public class Homepage extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        listtopic = (ListView)findViewById(R.id.listforum);
+
         Toast.makeText(this, "Welcome " +
                 FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_LONG).show();
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
+        
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
