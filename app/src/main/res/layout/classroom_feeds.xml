@@ -14,18 +14,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/add"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:onClick="onClick"/>
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/text_topic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/topic"
+            android:hint="Enter topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/text_topic"
+        android:id="@+id/text_discussion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/discussion"
+            android:hint="Enter discussion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
 
     <ExpandableListView
+        android:id="@+id/listforum"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/add"
-        android:text="forum">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_discussion">
 
     </ExpandableListView>
 

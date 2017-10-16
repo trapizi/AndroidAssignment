@@ -18,10 +18,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Homepage extends AppCompatActivity {
 
@@ -39,9 +50,15 @@ public class Homepage extends AppCompatActivity {
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    private ViewPager mViewPager;
 
+
+    private ViewPager mViewPager;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
+    private ListView listtopic;
+
+    private List<Forum> forumList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +69,12 @@ public class Homepage extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        listtopic = (ListView) findViewById(R.id.listforum);
+
         Toast.makeText(this, "Welcome " +
                 FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_LONG).show();
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
+
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
@@ -77,6 +95,41 @@ public class Homepage extends AppCompatActivity {
 
     }
 
+    //Firebase
+
+
+    /*private void addEventFirebaseListener(){
+        listtopic.setVisibility(View.INVISIBLE);
+
+        mDatabaseReference.child("topic").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(listtopic.size() > 0 )
+                    listtopic.clear();
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()){
+                    Topic topic = postSnapshot.getValue(classroom_feeds.class);
+                    listtopic.add(topic);
+                }
+
+                ListViewAdapter adapter = new ListViewAdapter(this, listtopic);
+                listtopic.setAdapter(adapter);
+
+                listtopic.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }*/
+
+    private void initFirebase() {
+        FirebaseApp.initializeApp(this);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,12 +143,8 @@ public class Homepage extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.signOut) {
             mAuth.getInstance().signOut();
-        } return true;
-    }
-
-    public void onClick(View view){
-        Intent i = new Intent(this, forumForm.class);
-        startActivity(i);
+        }
+        return true;
     }
 
 
@@ -116,7 +165,7 @@ public class Homepage extends AppCompatActivity {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
+       /* public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -127,48 +176,66 @@ public class Homepage extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.classroom_feeds, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_homepage, container, false);
 
             return rootView;
         }
+    }*/
 
+        /**
+         * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+         * one of the sections/tabs/pages.
+         */
+        public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
-        }
-
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 3;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "CLASSROOM FEEDS";
-                case 1:
-                    return "QUIZ";
-                case 2:
-                    return "CHAT ROOM";
+            public SectionsPagerAdapter(FragmentManager fm) {
+                super(fm);
             }
-            return null;
+
+            @Override
+            public Fragment getItem(int position) {
+                // getItem is called to instantiate the fragment for the given page.
+                // Return a PlaceholderFragment (defined as a static inner class below).
+                //return PlaceholderFragment.newInstance(position + 1);
+
+                switch (position) {
+                    case 0:
+                        classroom_feeds tab1 = new classroom_feeds();
+                        return tab1;
+
+                    case 1:
+                        QuizSelectionFragment tab2 = new QuizSelectionFragment();
+                        return tab2;
+
+                    case 2:
+                        fragment_chat tab3 = new fragment_chat();
+                        return tab3;
+
+                    default:
+                        return null;
+                }
+            }
+
+            @Override
+            public int getCount() {
+                // Show 3 total pages.
+                return 3;
+            }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position) {
+                    case 0:
+                        return "CLASSROOM FEEDS";
+                    case 1:
+                        return "QUIZ";
+                    case 2:
+                        return "CHAT ROOM";
+                }
+                return null;
+            }
         }
+
+
     }
 }

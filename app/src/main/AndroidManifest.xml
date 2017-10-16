@@ -28,6 +28,7 @@
         <activity android:name=".QuizSelection" />
         <activity android:name=".StartQuiz" />
         <activity android:name=".Playing" />
+        <activity android:name=".forumForm"/>
         <activity android:name=".QuizResult"></activity>
     </application>
 
