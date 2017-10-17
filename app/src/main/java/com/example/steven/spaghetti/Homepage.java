@@ -99,7 +99,7 @@ public class Homepage extends AppCompatActivity {
         listtopic = (ListView) findViewById(R.id.listforum);
 
         Toast.makeText(this, "Welcome " +
-                FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
+                FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_LONG).show();
 
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
