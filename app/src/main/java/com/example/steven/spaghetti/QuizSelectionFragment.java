@@ -26,6 +26,22 @@ import com.squareup.picasso.Picasso;
 
 public class QuizSelectionFragment extends Fragment {
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        myFragment = inflater.inflate(R.layout.fragment_quiz_selection, container, false);
+
+
+        listQuiz = (RecyclerView) myFragment.findViewById(R.id.listQuiz);
+        listQuiz.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(container.getContext());
+        listQuiz.setLayoutManager(layoutManager);
+
+
+        loadQuiz();
+        return myFragment;
+    }
+
     View myFragment;
 
     RecyclerView listQuiz;
@@ -56,21 +72,8 @@ public class QuizSelectionFragment extends Fragment {
 
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        myFragment = inflater.inflate(R.layout.fragment_quiz_selection, container, false);
 
 
-        listQuiz = (RecyclerView) myFragment.findViewById(R.id.listQuiz);
-        listQuiz.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(container.getContext());
-        listQuiz.setLayoutManager(layoutManager);
-
-
-        loadQuiz();
-        return myFragment;
-    }
 
 
     private void loadQuiz() {
