@@ -207,15 +207,15 @@ public class Homepage extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+   // public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private static final String ARG_SECTION_NUMBER = "section_number";
+       // private static final String ARG_SECTION_NUMBER = "section_number";
 
-        public PlaceholderFragment() {
-        }
+        //public PlaceholderFragment() {
+        //}
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -294,4 +294,3 @@ public class Homepage extends AppCompatActivity {
 
 
     }
-}
