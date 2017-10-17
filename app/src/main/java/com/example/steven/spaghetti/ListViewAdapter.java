@@ -22,10 +22,6 @@ public class ListViewAdapter extends BaseAdapter {
     List<Forum> lstForum;
     LayoutInflater inflater;
 
-    public ListViewAdapter(Activity activity, List<Forum> lstForum) {
-        this.activity = activity;
-        this.lstForum = lstForum;
-    }
 
     @Override
     public int getCount() {
@@ -52,7 +48,7 @@ public class ListViewAdapter extends BaseAdapter {
         TextView txtTopic = (TextView)itemView.findViewById(R.id.list_topic);
         TextView txtDiscussion = (TextView)itemView.findViewById(R.id.list_discussion);
 
-
+        txtFullName.setText(lstForum.get(position).getFullname());
         txtEmail.setText(lstForum.get(position).getEmail());
         txtTopic.setText(lstForum.get(position).getTopic());
         txtDiscussion.setText(lstForum.get(position).getDiscussion());
