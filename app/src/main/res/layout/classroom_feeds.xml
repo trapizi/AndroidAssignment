@@ -18,13 +18,15 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         />
 
     <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/toolbar"
         android:id="@+id/text_topic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <EditText
             android:id="@+id/topic"
@@ -46,12 +48,18 @@
             android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
 
+    <Button
+        android:id="@+id/post"
+        android:layout_below="@id/text_discussion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post"/>
 
     <ExpandableListView
         android:id="@+id/listforum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_discussion">
+        android:layout_below="@+id/post">
 
     </ExpandableListView>
 

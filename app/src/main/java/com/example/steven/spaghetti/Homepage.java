@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -82,6 +83,8 @@ public class Homepage extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ListView listtopic;
+    private EditText topic, discussion;
+    private Button post;
 
     private List<Forum> forumList = new ArrayList<>();
 
@@ -89,14 +92,13 @@ public class Homepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         registrationNotification();
-        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listtopic = (ListView) findViewById(R.id.listforum);
 
         Toast.makeText(this, "Welcome " +
                 FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_LONG).show();
@@ -120,7 +122,50 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
+        listtopic = (ListView) findViewById(R.id.listforum);
+        topic = (EditText) findViewById(R.id.topic);
+        discussion = (EditText) findViewById(R.id.discussion);
+        post = (Button) findViewById(R.id.post);
+
+        //Firebase
+        initFirebase();
+        addEventFirebaseListener();
+
+        }
+
+    private void addEventFirebaseListener() {
+        listtopic.setVisibility(View.INVISIBLE);
+
+        mDatabaseReference.child("Forum").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(forumList.size() > 0)
+                    forumList.clear();
+                for (DataSnapshot postSnapshot:dataSnapshot.getChildren()){
+                    Forum forum = postSnapshot.getValue(Forum.class);
+                    forumList.add(forum);
+                }
+                ListViewAdapter adapter = new ListViewAdapter(Homepage.this,forumList);
+                listtopic.setAdapter(adapter);
+
+                listtopic.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
+
+    private void initFirebase(){
+            FirebaseApp.initializeApp(this);
+                mFirebaseDatabase = FirebaseDatabase.getInstance();
+                mDatabaseReference = mFirebaseDatabase.getReference();
+        }
+
+
+
 
     private void registrationNotification() {
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -151,40 +196,6 @@ public class Homepage extends AppCompatActivity {
 
     }
 
-    //Firebase
-
-
-    /*private void addEventFirebaseListener(){
-        listtopic.setVisibility(View.INVISIBLE);
-
-        mDatabaseReference.child("topic").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(listtopic.size() > 0 )
-                    listtopic.clear();
-                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()){
-                    Topic topic = postSnapshot.getValue(classroom_feeds.class);
-                    listtopic.add(topic);
-                }
-
-                ListViewAdapter adapter = new ListViewAdapter(this, listtopic);
-                listtopic.setAdapter(adapter);
-
-                listtopic.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }*/
-
-    private void initFirebase() {
-        FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference();
-    }
 
 
     @Override
@@ -286,7 +297,7 @@ public class Homepage extends AppCompatActivity {
                     case 1:
                         return "QUIZ";
                     case 2:
-                        return "CHAT ROOM";
+                        return "Ranking";
                 }
                 return null;
             }

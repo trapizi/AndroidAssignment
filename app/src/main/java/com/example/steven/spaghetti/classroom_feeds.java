@@ -23,6 +23,7 @@ public class classroom_feeds extends Fragment {
 
     private EditText topic, discussion;
     private ListView listforum;
+    private Menu menu_forum;
 
 
     //Add Toolbar
@@ -41,12 +42,12 @@ public class classroom_feeds extends Fragment {
 
 
 
-   /*@Override
-    public boolean onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+   @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.menu_forum,menu);
-        return true;
-    }*/
+        //return true;
+    }
 
 
 

@@ -14,9 +14,7 @@ public class Forum {
 
 
     public Forum(String zid, String fullname, String email, String topic, String discussion) {
-        this.zid = zid;
-        this.fullname = fullname;
-        this.email = email;
+        this.zid = zid; //Primary key
         this.topic = topic;
         this.discussion = discussion;
     }
