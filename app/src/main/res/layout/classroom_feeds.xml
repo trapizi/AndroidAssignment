@@ -14,14 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
 
     <android.support.design.widget.TextInputLayout
-        android:layout_below="@+id/toolbar"
         android:id="@+id/text_topic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -46,13 +40,21 @@
             android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
 
+    <Button
+        android:id="@+id/postBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/text_discussion"
+        android:onClick="post"/>
 
-    <ExpandableListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/listforum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_discussion">
+        android:layout_below="@+id/postBtn">
 
-    </ExpandableListView>
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

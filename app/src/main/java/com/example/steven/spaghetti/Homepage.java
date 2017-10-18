@@ -79,12 +79,15 @@ public class Homepage extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private FirebaseAuth mAuth;
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mDatabaseReference;
+
     private ListView listforum;
     private EditText topic, discussion;
     
     private List<Forum> forumList = new ArrayList<>();
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,36 +135,7 @@ public class Homepage extends AppCompatActivity {
 
     }
 
-    /*private void addEventFirebaseListner() {
-        listforum.setVisibility(View.INVISIBLE);
 
-        mDatabaseReference.child("Forum").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(forumList.size()>0)
-                    forumList.clear();
-                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()){
-                    Forum forum = postSnapshot.getValue(Forum.class);
-                    forumList.add(forum);
-                }
-                ListViewAdapter adapter = new ListViewAdapter(Homepage.this, forumList);
-                listforum.setAdapter(adapter);
-
-                listforum.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void initFirebase() {
-        FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference();
-    }*/
 
     private void registrationNotification() {
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -211,6 +185,8 @@ public class Homepage extends AppCompatActivity {
         }
         return true;
     }
+
+
 
 
     /**
