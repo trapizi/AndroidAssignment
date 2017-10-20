@@ -31,8 +31,7 @@ import java.util.List;
 
 
 public class classroom_feeds extends Fragment {
-
-    final static String DB_URL="https://spaghetti-68866.firebaseio.com/Forum";
+    
     public static classroom_feeds activity;
     private EditText topic, discussion;
     private ListView listforum;
