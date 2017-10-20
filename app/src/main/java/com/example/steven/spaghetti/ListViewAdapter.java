@@ -19,22 +19,22 @@ import java.util.List;
 public class ListViewAdapter extends BaseAdapter {
 
     Activity activity;
-    List<Forum> lstForum;
+    List<Forum> listForum;
     LayoutInflater inflater;
 
-    public ListViewAdapter(Activity activity, List<Forum> lstForum) {
-        this.activity = activity;
-        this.lstForum = lstForum;
+    public ListViewAdapter(classroom_feeds activity, List<Forum> lstForum) {
+        classroom_feeds.activity = activity;
+        this.listForum = lstForum;
     }
 
     @Override
     public int getCount() {
-        return lstForum.size();
+        return listForum.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return lstForum.get(position);
+        return listForum.get(position);
     }
 
     @Override
@@ -52,8 +52,8 @@ public class ListViewAdapter extends BaseAdapter {
         TextView txtDiscussion = (TextView)itemView.findViewById(R.id.list_discussion);
 
 
-        txtTopic.setText(lstForum.get(position).getTopic());
-        txtDiscussion.setText(lstForum.get(position).getDiscussion());
+        txtTopic.setText(listForum.get(position).getTopic());
+        txtDiscussion.setText(listForum.get(position).getDiscussion());
 
         return itemView;
     }

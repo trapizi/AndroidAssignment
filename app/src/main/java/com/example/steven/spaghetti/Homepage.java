@@ -83,7 +83,7 @@ public class Homepage extends AppCompatActivity {
     private ListView listforum;
     private EditText topic, discussion;
     
-    private List<Forum> forumList = new ArrayList<>();
+
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
