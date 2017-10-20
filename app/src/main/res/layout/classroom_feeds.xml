@@ -11,31 +11,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/text_topic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
+    <EditText
             android:id="@+id/topic"
             android:hint="Enter topic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_below="@+id/text_topic"
-        android:id="@+id/text_discussion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
+    <EditText
             android:id="@+id/discussion"
             android:hint="Enter discussion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topic"/>
 
     <Button
         android:id="@+id/postBtn"
@@ -43,7 +30,7 @@
         android:layout_height="wrap_content"
         android:text="Post"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/text_discussion"
+        android:layout_below="@id/discussion"
         android:onClick="post"/>
 
     <ListView
