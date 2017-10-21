@@ -124,7 +124,9 @@ public class classroom_feeds extends Fragment {
         databaseReference.child(idStr).setValue(forum);
 
 
-
+        /*DatabaseReference id = databaseReference.push();
+        id.child("Forum").setValue(topic.getText().toString());
+        id.child("Discussion").setValue(discussion.getText().toString());*/
 
         topic.setText("");
         discussion.setText("");
