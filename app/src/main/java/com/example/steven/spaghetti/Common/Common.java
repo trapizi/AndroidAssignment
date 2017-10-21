@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Common {
     public static String quizId;
+    public static String quizName;
     public static List<Question> questionList = new ArrayList<>();
 
 

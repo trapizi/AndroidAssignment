@@ -32,6 +32,7 @@ public class QuizSelectionFragment extends Fragment {
         myFragment = inflater.inflate(R.layout.fragment_quiz_selection, container, false);
 
 
+
         listQuiz = (RecyclerView) myFragment.findViewById(R.id.listQuiz);
         listQuiz.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(container.getContext());
@@ -97,6 +98,7 @@ public class QuizSelectionFragment extends Fragment {
                         //Toast.makeText(getActivity(), String.format("%s|%s", mFirebaseAdapter.getRef(position).getKey(), model.getName()), Toast.LENGTH_SHORT).show();
                     Intent startQuiz = new Intent(getActivity(),StartQuiz.class);
                         Common.quizId = mFirebaseAdapter.getRef(position).getKey();
+                        Common.quizName=  model.getName();
                         startActivity(startQuiz);
 
                     }

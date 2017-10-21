@@ -8,14 +8,18 @@ public class QuestionScore {
     private String Question_Score;
     private String User;
     private String Score;
+    private String QuizId;
+    private String QuizName;
 
     public QuestionScore() {
     }
 
-    public QuestionScore(String question_Score, String user, String score) {
+    public QuestionScore(String question_Score, String user, String score, String quizId, String quizName) {
         Question_Score = question_Score;
         User = user;
         Score = score;
+        QuizId = quizId;
+        QuizName = quizName;
     }
 
     public String getQuestion_Score() {
@@ -40,5 +44,21 @@ public class QuestionScore {
 
     public void setScore(String score) {
         Score = score;
+    }
+
+    public String getQuizId() {
+        return QuizId;
+    }
+
+    public void setQuizId(String quizId) {
+        QuizId = quizId;
+    }
+
+    public String getQuizName() {
+        return QuizName;
+    }
+
+    public void setQuizName(String quizName) {
+        QuizName = quizName;
     }
 }

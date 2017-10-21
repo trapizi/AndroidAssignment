@@ -40,12 +40,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
-public class Homepage extends AppCompatActivity {
+public class Homepage extends AppCompatActivity{
 
     BroadcastReceiver mRegistrationBroadcastReceiver;
 
@@ -151,6 +154,8 @@ public class Homepage extends AppCompatActivity {
 
     }
 
+
+
     //Firebase
 
 
@@ -201,6 +206,11 @@ public class Homepage extends AppCompatActivity {
             mAuth.getInstance().signOut();
         }
         return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
 
@@ -264,7 +274,7 @@ public class Homepage extends AppCompatActivity {
                         return tab2;
 
                     case 2:
-                        fragment_chat tab3 = new fragment_chat();
+                        RankingFragment tab3 = new RankingFragment();
                         return tab3;
 
                     default:
@@ -286,7 +296,7 @@ public class Homepage extends AppCompatActivity {
                     case 1:
                         return "QUIZ";
                     case 2:
-                        return "CHAT ROOM";
+                        return "LEADERBOARD";
                 }
                 return null;
             }
