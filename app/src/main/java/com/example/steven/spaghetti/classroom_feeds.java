@@ -60,8 +60,11 @@ public class classroom_feeds extends Fragment {
         firebaseDatabase=FirebaseDatabase.getInstance();
         databaseReference=firebaseDatabase.getReference("Forum");
 
-        List<Forum> forumList=new ArrayList<Forum>();
-        listforum.setAdapter(new ListViewAdapter(this,forumList));
+        final List<Forum> forumList=new ArrayList<Forum>();
+        final ListViewAdapter adapter =new ListViewAdapter(this,forumList);
+        listforum.setAdapter(adapter);
+
+
 
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
@@ -69,6 +72,9 @@ public class classroom_feeds extends Fragment {
                 Log.d("spaghetti-log-tag", "onChildAdded:" +dataSnapshot.getKey());
 
                 Forum forum = dataSnapshot.getValue(Forum.class);
+                forumList.add(forum);
+                adapter.notifyDataSetChanged();
+
             }
 
             @Override
