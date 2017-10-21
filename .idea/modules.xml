@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/Spaghetti.iml" filepath="$PROJECT_DIR$/Spaghetti.iml" />
+=======
       <module fileurl="file://$PROJECT_DIR$/AndroidAssignment.iml" filepath="$PROJECT_DIR$/AndroidAssignment.iml" />
+>>>>>>> ce2e7b96470f3f6174859bf6bf99fa9aa0be14c9
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mylibrary/mylibrary.iml" filepath="$PROJECT_DIR$/mylibrary/mylibrary.iml" />
     </modules>

@@ -28,21 +28,26 @@
         <activity android:name=".QuizSelection" />
         <activity android:name=".StartQuiz" />
         <activity android:name=".Playing" />
-        <activity android:name=".forumForm"/>
-        <activity android:name=".QuizResult"></activity>
-        
+        <activity android:name=".forumForm" />
+        <activity android:name=".QuizResult" />
+
         <service android:name=".BroadcastReceiver.MyFirebaseIdService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
         <service android:name=".BroadcastReceiver.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".BackgroundNotification">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
+        <activity android:name=".ScoreDetail"></activity>
     </application>
 
 </manifest>

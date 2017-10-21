@@ -20,6 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
@@ -60,6 +61,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
     //CHECK if user is signed in
     /*@Override
     public void onStart() {
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         startActivity(new Intent(LogIn.this, Homepage.class));

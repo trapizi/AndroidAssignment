@@ -32,10 +32,20 @@ import com.example.steven.spaghetti.Common.Common;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+<<<<<<< HEAD
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+=======
+
+>>>>>>> ce2e7b96470f3f6174859bf6bf99fa9aa0be14c9
 import java.util.Random;
 
-public class Homepage extends AppCompatActivity {
+public class Homepage extends AppCompatActivity{
 
     BroadcastReceiver mRegistrationBroadcastReceiver;
 
@@ -156,6 +166,35 @@ public class Homepage extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD
+
+
+    //Firebase
+
+
+    /*private void addEventFirebaseListener(){
+        listtopic.setVisibility(View.INVISIBLE);
+
+        mDatabaseReference.child("topic").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(listtopic.size() > 0 )
+                    listtopic.clear();
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()){
+                    Topic topic = postSnapshot.getValue(classroom_feeds.class);
+                    listtopic.add(topic);
+                }
+
+                ListViewAdapter adapter = new ListViewAdapter(this, listtopic);
+                listtopic.setAdapter(adapter);
+
+                listtopic.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+=======
+>>>>>>> ce2e7b96470f3f6174859bf6bf99fa9aa0be14c9
 
 
 
@@ -174,6 +213,11 @@ public class Homepage extends AppCompatActivity {
             mAuth.getInstance().signOut();
         }
         return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
 
@@ -239,7 +283,7 @@ public class Homepage extends AppCompatActivity {
                         return tab2;
 
                     case 2:
-                        fragment_chat tab3 = new fragment_chat();
+                        RankingFragment tab3 = new RankingFragment();
                         return tab3;
 
                     default:
@@ -261,7 +305,11 @@ public class Homepage extends AppCompatActivity {
                     case 1:
                         return "QUIZ";
                     case 2:
+<<<<<<< HEAD
+                        return "LEADERBOARD";
+=======
                         return "Ranking";
+>>>>>>> ce2e7b96470f3f6174859bf6bf99fa9aa0be14c9
                 }
                 return null;
             }

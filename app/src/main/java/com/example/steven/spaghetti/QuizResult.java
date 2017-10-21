@@ -44,7 +44,7 @@ public class QuizResult extends AppCompatActivity {
         btnRetake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(QuizResult.this, QuizSelection.class);
+                Intent intent = new Intent(QuizResult.this, Homepage.class);
                 startActivity(intent);
                 finish();
             }
@@ -64,12 +64,14 @@ public class QuizResult extends AppCompatActivity {
             progressBar.setProgress(correctAnswer);
 
             //UPDATE score to database
-            mReference.child(String.format("%s", FirebaseAuth.getInstance().getUid(),
+            mReference.child(String.format("%s_%s", FirebaseAuth.getInstance().getUid(),
                                                     Common.quizId))
                     .setValue(new QuestionScore(String.format("%s_%s", FirebaseAuth.getInstance().getCurrentUser().getEmail(),
                             Common.quizId),
                             FirebaseAuth.getInstance().getCurrentUser().getUid(),
-                            String.valueOf(score)));
+                            String.valueOf(score),
+                            Common.quizId,
+                            Common.quizName));
         }
     }
 }
