@@ -20,25 +20,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.steven.spaghetti.Common.Common;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+<<<<<<< HEAD
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -46,6 +40,9 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+=======
+
+>>>>>>> ce2e7b96470f3f6174859bf6bf99fa9aa0be14c9
 import java.util.Random;
 
 public class Homepage extends AppCompatActivity{
@@ -82,11 +79,15 @@ public class Homepage extends AppCompatActivity{
 
     private ViewPager mViewPager;
     private FirebaseAuth mAuth;
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mDatabaseReference;
-    private ListView listtopic;
 
-    private List<Forum> forumList = new ArrayList<>();
+    private ListView listforum;
+    private EditText topic, discussion;
+    
+
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,10 +100,10 @@ public class Homepage extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listtopic = (ListView) findViewById(R.id.listforum);
+        
 
         Toast.makeText(this, "Welcome " +
-                FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
+                FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_LONG).show();
 
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -123,7 +124,18 @@ public class Homepage extends AppCompatActivity{
             }
         });
 
+        //Control
+        listforum = (ListView) findViewById(R.id.listforum);
+        topic = (EditText) findViewById(R.id.topic);
+        discussion = (EditText) findViewById(R.id.discussion);
+        
+        //Firebase
+        //initFirebase();
+        //addEventFirebaseListner();
+
     }
+
+
 
     private void registrationNotification() {
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -154,6 +166,7 @@ public class Homepage extends AppCompatActivity{
 
     }
 
+<<<<<<< HEAD
 
 
     //Firebase
@@ -180,16 +193,10 @@ public class Homepage extends AppCompatActivity{
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+=======
+>>>>>>> ce2e7b96470f3f6174859bf6bf99fa9aa0be14c9
 
-            }
-        });
-    }*/
 
-    private void initFirebase() {
-        FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference();
-    }
 
 
     @Override
@@ -212,6 +219,8 @@ public class Homepage extends AppCompatActivity{
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
+
 
 
     /**
@@ -296,7 +305,11 @@ public class Homepage extends AppCompatActivity{
                     case 1:
                         return "QUIZ";
                     case 2:
+<<<<<<< HEAD
                         return "LEADERBOARD";
+=======
+                        return "Ranking";
+>>>>>>> ce2e7b96470f3f6174859bf6bf99fa9aa0be14c9
                 }
                 return null;
             }

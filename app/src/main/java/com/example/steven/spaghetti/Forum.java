@@ -5,7 +5,7 @@ package com.example.steven.spaghetti;
  */
 
 public class Forum {
-    private String zid, fullname, email, topic, discussion;
+    private String zid, topic, discussion;
 
 
 
@@ -13,10 +13,8 @@ public class Forum {
     }
 
 
-    public Forum(String zid, String fullname, String email, String topic, String discussion) {
-        this.zid = zid;
-        this.fullname = fullname;
-        this.email = email;
+    public Forum(String zid, String topic, String discussion) {
+        this.zid = zid; // Primary Key
         this.topic = topic;
         this.discussion = discussion;
     }
@@ -29,21 +27,6 @@ public class Forum {
         this.zid = zid;
     }
 
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getTopic() {
         return topic;
