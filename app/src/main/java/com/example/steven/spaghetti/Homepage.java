@@ -166,7 +166,7 @@ public class Homepage extends AppCompatActivity{
 
     }
 
-<<<<<<< HEAD
+
 
 
     //Firebase
@@ -193,8 +193,7 @@ public class Homepage extends AppCompatActivity{
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-=======
->>>>>>> ce2e7b96470f3f6174859bf6bf99fa9aa0be14c9
+
 
 
 
@@ -305,11 +304,11 @@ public class Homepage extends AppCompatActivity{
                     case 1:
                         return "QUIZ";
                     case 2:
-<<<<<<< HEAD
+
                         return "LEADERBOARD";
-=======
+
                         return "Ranking";
->>>>>>> ce2e7b96470f3f6174859bf6bf99fa9aa0be14c9
+
                 }
                 return null;
             }
