@@ -18,12 +18,12 @@ import java.util.List;
 
 public class ListViewAdapter extends BaseAdapter {
 
-    classroom_feeds activity;
+    Activity activity;
     List<Forum> listForum;
     LayoutInflater inflater;
 
     public ListViewAdapter(classroom_feeds activity, List<Forum> lstForum) {
-        this.activity = activity;
+        classroom_feeds.activity = activity;
         this.listForum = lstForum;
     }
 
@@ -44,9 +44,8 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        inflater = (LayoutInflater)activity.getActivity().getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater)activity.getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(R.layout.list_forum,null);
-        activity.getActivity().getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 
         TextView txtTopic = (TextView)itemView.findViewById(R.id.list_topic);
