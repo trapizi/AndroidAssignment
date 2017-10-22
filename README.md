@@ -1,15 +1,15 @@
 # Spaghetti - INFS3634 Project
 
 ## App description: 
-Spaghetti is an android application that assists INFS3634 tutors and lecturers in teaching the course to future students. We aim to create a study platform where Students and Tutors can interact and communicate to each others easily via their smartphone.
+Spaghetti is an android application that assists INFS3634 tutors and lecturers in teaching the course to future students. We aim to create a study platform where students and tutors can interact and communicate to each others easily via their smartphone.
 
-The application offers 3 unique features and integrated using Firebase platform:
+The application offers 3 unique features:
 
 - Forum
 - Quiz
 - Ranking
 
-Spaghetti also offers Firebase powerful integrated functions to help the Lecturers and Tutors use the app at its best potential:
+Spaghetti also offers powerful Firebase integrated functions to help the Lecturers and Tutors use the app at its best potential:
 
 - Announcement
 - NoSQL Database
