@@ -23,7 +23,7 @@ public class ListViewAdapter extends BaseAdapter {
     LayoutInflater inflater;
 
     public ListViewAdapter(classroom_feeds activity, List<Forum> lstForum) {
-        classroom_feeds.activity = activity;
+        this.activity = activity.getActivity();
         this.listForum = lstForum;
     }
 

@@ -33,11 +33,19 @@
         android:layout_below="@id/discussion"
         android:onClick="post"/>
 
+    <TextView
+        android:id="@+id/listinfo"
+        android:layout_below="@id/postBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List information"
+        android:textSize="23dp"/>
+
     <ListView
         android:id="@+id/listforum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/postBtn">
+        android:layout_below="@+id/listinfo">
 
     </ListView>
 
