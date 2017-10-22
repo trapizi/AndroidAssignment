@@ -48,7 +48,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return "QUIZ";
             case 2:
-                return "CHAT ROOM";
+                return "LEADERBOARD";
 
         }
         return null;
