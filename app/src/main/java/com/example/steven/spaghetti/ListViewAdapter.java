@@ -51,9 +51,9 @@ public class ListViewAdapter extends BaseAdapter {
         TextView txtTopic = (TextView)itemView.findViewById(R.id.list_topic);
         TextView txtDiscussion = (TextView)itemView.findViewById(R.id.list_discussion);
 
-
-        txtTopic.setText(listForum.get(position).getTopic());
-        txtDiscussion.setText(listForum.get(position).getDiscussion());
+        int posisiKebalik = listForum.size()-(position+1);
+        txtTopic.setText(listForum.get(posisiKebalik).getTopic());
+        txtDiscussion.setText(listForum.get(posisiKebalik).getDiscussion());
 
         return itemView;
     }
