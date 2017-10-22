@@ -16,11 +16,11 @@ Spaghetti also offers Firebase powerful integrated functions to help the Lecture
 - Manage quiz
 - Account management
 
-#Feature highlights
-##Forum
+# Feature highlights
+## Forum
 
 
-##[Quiz](https://imgur.com/a/zcHpz)
+## [Quiz](https://imgur.com/a/zcHpz)
 
 Quiz is one of the core features of Spaghetti. Like the name speaks for itself, this function offers lecturers and tutors to test their students using the course materials and resources. The quiz is in multiple choice format. Each question consists of four possible answers and with only **one correct answer**. Students may have many attempts. 
 
@@ -30,7 +30,7 @@ When students are taking the quizzes, each students have 1 minute to do each que
 
 When an incorrect answer is picked, the app will stop students from doing the quiz and display their result.
 
-##Performance and Ranking
+## Performance and Ranking
 Once students finished their quiz. The app will update their score to the database under *Question_Score*. The result is stored as an instance in *AccountUid_QuizId* format. For instance
 
     59MxyDqDgJh75vwKjB1nr6zc8Xf2_01
@@ -41,9 +41,9 @@ where **59MxyDqDgJh75vwKjB1nr6zc8Xf2** is the Uid and **01** and **02** are the 
 
 As students completed more quizzes, the system will add up all the quiz scores and store the total score in Ranking database.
 
-##Manual guide
+## Manual guide
 
-###Account management
+### Account management
 Account management is done via Firebase Authentication. This is where lecturers can add new account for students and tutors. Changing password, disable accounts or delete them.
 
 To grant console access to tutors, simply go to *Users and permission*. There, we can add tutors email account and their roles. Each role comes with unique access to the console. Tutors account are recommended to be added under *Editor* role.
@@ -112,7 +112,7 @@ Users are assumed to have basic knowledge in JSON in order to make their own qui
       "QuizId" : "01"
     }
 
-###Announcement
+### Announcement
 Announcement messages are made via Firebase Console.
 
 **Step1**: Open Firebase App console and select Notification.
