@@ -18,7 +18,11 @@ Spaghetti also offers powerful Firebase integrated functions to help the Lecture
 
 # Feature highlights
 ## Forum
+First feature of Spaghetti is forum. This is the first version that will be updated on the next sprint where user could send a post. The purpose of the pose is to distributes more information for other users. It consists of topic as the title of the information and discussion which will be the details of the information.
 
+The forum is listed based on the latest post. So when a user is posting new information, it will appear on the toplist of the forumList listview. The listview will automatically updated when a user click the post button.
+
+In the firebase, the post will be listed under Forum child. Each post will generate a random primary key so that none of the post have the same primary key.
 
 ## [Quiz](https://imgur.com/a/zcHpz)
 
