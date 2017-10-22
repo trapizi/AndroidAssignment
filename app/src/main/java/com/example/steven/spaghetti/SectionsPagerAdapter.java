@@ -26,7 +26,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return tab2;
 
             case 3:
-                fragment_chat tab3 = new fragment_chat();
+                RankingFragment tab3 = new RankingFragment();
                 return tab3;
 
             default:
