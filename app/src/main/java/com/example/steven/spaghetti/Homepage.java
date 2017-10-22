@@ -32,7 +32,6 @@ import com.example.steven.spaghetti.Common.Common;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-<<<<<<< HEAD
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -40,9 +39,6 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-=======
-
->>>>>>> ce2e7b96470f3f6174859bf6bf99fa9aa0be14c9
 import java.util.Random;
 
 public class Homepage extends AppCompatActivity{
@@ -103,7 +99,7 @@ public class Homepage extends AppCompatActivity{
         
 
         Toast.makeText(this, "Welcome " +
-                FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_LONG).show();
+                FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
 
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -306,9 +302,6 @@ public class Homepage extends AppCompatActivity{
                     case 2:
 
                         return "LEADERBOARD";
-
-                        return "Ranking";
-
                 }
                 return null;
             }

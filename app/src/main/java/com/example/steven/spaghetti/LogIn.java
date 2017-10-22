@@ -50,22 +50,21 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
         activity_log_in = (RelativeLayout) findViewById(R.id.activity_log_in);
 
         btnSignIn.setOnClickListener(this);
-
-
-        //Check session, IF success -> dashboard
-        //if (mAuth.getCurrentUser() != null) {
-         //   startActivity(new Intent (LogIn.this, Dashboard.class));
-        //}
     }
 
+
     //CHECK if user is signed in
-    /*@Override
+    @Override
     public void onStart() {
         FirebaseMessaging.getInstance().subscribeToTopic("news");
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        startActivity(new Intent(LogIn.this, Homepage.class));
-    }*/
+        if (currentUser == null) {
+            this.findViewById(R.id.activity_log_in);
+        } else {
+            startActivity(new Intent(LogIn.this, Homepage.class));
+        }
+    }
 
     //Sign in process
     @Override
