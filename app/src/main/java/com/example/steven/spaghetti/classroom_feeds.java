@@ -106,13 +106,13 @@ public class classroom_feeds extends Fragment {
 
 
 
-        listforum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listforum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(classroom_feeds.this.getActivity(),additionalforumfeature.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         return rootView;
     }
