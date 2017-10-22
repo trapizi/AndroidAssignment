@@ -48,8 +48,6 @@ public class RankingFragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,17 +69,17 @@ public class RankingFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         rankingList.setHasFixedSize(true);
 
+        //Reverse listing order
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
         rankingList.setLayoutManager(layoutManager);
-
 
         //Fetch UID
         updateScore(FirebaseAuth.getInstance().getCurrentUser().getUid(), new RankingCallBack<Ranking>() {
             @Override
             public void callBack(Ranking ranking) {
                 //Update Ranking table
-                rankingTable.child(ranking.getUid())
+                rankingTable.child(FirebaseAuth.getInstance().getUid())
                         .setValue(ranking);
                 //showRanking();
             }
@@ -96,7 +94,7 @@ public class RankingFragment extends Fragment {
         ) {
             @Override
             protected void populateViewHolder(RankingViewHolder viewHolder, final Ranking model, int position) {
-                viewHolder.txt_name.setText(FirebaseAuth.getInstance().getUid());
+                viewHolder.txt_name.setText((String.valueOf(FirebaseAuth.getInstance().getUid()).toString()));
                 viewHolder.txt_score.setText(String.valueOf(model.getScore()));
 
                 viewHolder.setItemClickListener(new ItemClickListener() {
@@ -118,12 +116,9 @@ public class RankingFragment extends Fragment {
         return myFragment;
     }
 
-
-
-
     //Calculate and update score
     private void updateScore(final String uid, final RankingCallBack<Ranking> callback) {
-        mReference.orderByChild("user").equalTo(FirebaseAuth.getInstance().getUid())
+        mReference.orderByChild("user").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
         .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -133,7 +128,6 @@ public class RankingFragment extends Fragment {
                 }
                 Ranking ranking = new Ranking(uid,sum);
                 callback.callBack(ranking);
-
             }
 
             @Override
