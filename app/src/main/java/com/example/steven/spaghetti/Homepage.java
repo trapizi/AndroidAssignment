@@ -168,17 +168,17 @@ public class Homepage extends AppCompatActivity{
 
 
     //Firebase
+/*
 
-
-    /*private void addEventFirebaseListener(){
+    private void addEventFirebaseListener(){
         listtopic.setVisibility(View.INVISIBLE);
 
         mDatabaseReference.child("topic").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(listtopic.size() > 0 )
+                if (listtopic.size() > 0)
                     listtopic.clear();
-                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Topic topic = postSnapshot.getValue(classroom_feeds.class);
                     listtopic.add(topic);
                 }
@@ -192,7 +192,9 @@ public class Homepage extends AppCompatActivity{
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-
+            }
+        }
+    }*/
 
 
 
@@ -208,6 +210,8 @@ public class Homepage extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.signOut) {
             mAuth.getInstance().signOut();
+            Intent signout = new Intent(Homepage.this, LogIn.class);
+            startActivity(signout);
         }
         return true;
     }
@@ -252,7 +256,7 @@ public class Homepage extends AppCompatActivity{
 
             return rootView;
         }
-    }*/
+    }
 
         /**
          * A {@link FragmentPagerAdapter} that returns a fragment corresponding to

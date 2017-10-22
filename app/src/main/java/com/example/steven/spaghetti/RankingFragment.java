@@ -24,6 +24,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
@@ -48,8 +49,6 @@ public class RankingFragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,13 +70,13 @@ public class RankingFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         rankingList.setHasFixedSize(true);
 
+        //Reverse listing order
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
         rankingList.setLayoutManager(layoutManager);
 
-
         //Fetch UID
-        updateScore(FirebaseAuth.getInstance().getCurrentUser().getUid(), new RankingCallBack<Ranking>() {
+        updateScore((FirebaseAuth.getInstance().getCurrentUser().getUid()).toString(), new RankingCallBack<Ranking>() {
             @Override
             public void callBack(Ranking ranking) {
                 //Update Ranking table
@@ -88,6 +87,9 @@ public class RankingFragment extends Fragment {
         });
 
         //Set Adapter
+
+        //NOTE: from Steven
+        //Adapter can't query Ranking's children.
         adapter = new FirebaseRecyclerAdapter<Ranking, RankingViewHolder>(
                 Ranking.class,
                 R.layout.layout_ranking,
@@ -95,17 +97,20 @@ public class RankingFragment extends Fragment {
                 rankingTable.orderByChild("score")
         ) {
             @Override
-            protected void populateViewHolder(RankingViewHolder viewHolder, final Ranking model, int position) {
-                viewHolder.txt_name.setText(FirebaseAuth.getInstance().getUid());
+            protected void populateViewHolder(RankingViewHolder viewHolder, Ranking model, int position) {
+
+                Query query = rankingTable.child("ranking").orderByChild("uid");
+
+                viewHolder.txt_name.setText(query.toString());
                 viewHolder.txt_score.setText(String.valueOf(model.getScore()));
 
+                //View more detail score
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         Intent scoreDetail = new Intent(getActivity(), ScoreDetail.class);
                         scoreDetail.putExtra("viewUser", FirebaseAuth.getInstance().getUid());
                         startActivity(scoreDetail);
-
                     }
                 });
 
@@ -118,12 +123,9 @@ public class RankingFragment extends Fragment {
         return myFragment;
     }
 
-
-
-
     //Calculate and update score
     private void updateScore(final String uid, final RankingCallBack<Ranking> callback) {
-        mReference.orderByChild("user").equalTo(FirebaseAuth.getInstance().getUid())
+        mReference.orderByChild("user").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
         .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -133,7 +135,6 @@ public class RankingFragment extends Fragment {
                 }
                 Ranking ranking = new Ranking(uid,sum);
                 callback.callBack(ranking);
-
             }
 
             @Override
