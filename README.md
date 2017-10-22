@@ -41,7 +41,13 @@ where **59MxyDqDgJh75vwKjB1nr6zc8Xf2** is the Uid and **01** and **02** are the 
 
 As students completed more quizzes, the system will add up all the quiz scores and store the total score in Ranking database.
 
-## Manual guide
+## Announcement
+
+Since Moodle announcement are not often checked by students, especially in a course with more than 50 students. We facilitated Firebase function to  make it more convenient and faster for lecturers to communicate with students. 
+
+Spaghetti's Announcement feature is an integrated Firebase function that allows lecturers to make announcement message and send it directly to students' phone under push notification.
+
+# Manual guide
 
 ### Account management
 Account management is done via Firebase Authentication. This is where lecturers can add new account for students and tutors. Changing password, disable accounts or delete them.
