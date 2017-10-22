@@ -18,9 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dashboard" />
         <activity android:name=".ForgotPassword" />
-        <activity android:name=".SignUp" />
         <activity
             android:name=".Homepage"
             android:label="@string/title_activity_homepage"
